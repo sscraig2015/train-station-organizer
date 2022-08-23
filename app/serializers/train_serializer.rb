@@ -1,3 +1,3 @@
 class TrainSerializer < ActiveModel::Serializer
-  attributes :id, :number, :class
+  attributes :id, :number, :section
 end

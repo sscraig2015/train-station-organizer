@@ -1,16 +1,19 @@
 import React from "react"
 import NavBar from "./components/NavBar";
 import {  Routes, Route } from "react-router-dom";
-import Flights from "./pages/Flights";
+import Trains from "./pages/Trains";
 
 
 
 function App() {
+  
+
+  
   return (
-      <div class= "content">
+      <div className= "content">
         <NavBar />
         <Routes>
-          <Route path= '/flights' element={ <Flights/> } />
+          <Route path= '/trains' element={ <Trains  /> } />
         </Routes>
       </div>
   )

@@ -5,10 +5,12 @@ function NavBar() {
   
 
   return (
-    <div>
-      <NavLink to = '/'>Home</NavLink>
-      <NavLink to = '/flights'>Flights</NavLink>
-      <NavLink to = '/passengers'>Passengers</NavLink>
+    <div className = "navBar">
+      <ul>
+        <li> <NavLink to = '/'>Home</NavLink> </li>
+        <li> <NavLink to = '/trains'>Trains</NavLink> </li>
+        <li> <NavLink to = '/passengers'>Passengers</NavLink> </li>
+      </ul>
     </div>
   );
 }

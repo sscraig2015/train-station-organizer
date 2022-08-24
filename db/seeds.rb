@@ -1,0 +1,1 @@
+User.create(username: "sscraig", password: "abadpassword", password_confirmation: "abadpassword")

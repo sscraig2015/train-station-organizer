@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :tickets
+  post '/login', to: 'sessions#create'
   
-  resources :passengers
-
+  resources :tickets 
+  
+  resources :passengers do
+   resources :tickets
+  end
+  
   resources :trains
  end

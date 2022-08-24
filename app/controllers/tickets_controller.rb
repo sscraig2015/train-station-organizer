@@ -1,7 +1,14 @@
 class TicketsController < ApplicationController
 
     def index
-        render json: Ticket.all
+        if params[:passenger_id]
+            passenger = Passenger.find(params[:passenger_id])
+            tickets = passenger.tickets
+        else
+            tickets = Ticket.all
+        end
+
+        render json: tickets, status: :ok
     end
 
     def show

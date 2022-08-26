@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
+
+  delete '/sessions', to: 'sessions#destroy'
   
   resources :tickets 
   
@@ -8,5 +10,8 @@ Rails.application.routes.draw do
   end
   
   resources :trains
+
+  get '/me', to: 'users#show'
+
 
  end

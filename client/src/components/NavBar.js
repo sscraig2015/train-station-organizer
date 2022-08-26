@@ -10,6 +10,7 @@ function NavBar() {
         <li> <NavLink to = '/'>Home</NavLink> </li>
         <li> <NavLink to = '/trains'>Trains</NavLink> </li>
         <li> <NavLink to = '/passengers'>Passengers</NavLink> </li>
+        
       </ul>
     </div>
   );

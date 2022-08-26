@@ -1,7 +1,7 @@
 class TrainsController < ApplicationController
 
     def index
-        render json: Train.all
+        render json: Train.all.order(:number)
     end
 
     def show

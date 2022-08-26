@@ -6,7 +6,7 @@ class PassengersController < ApplicationController
 
     def show
         passenger = find_passenger
-        render json: passenger, status: :ok
+        render json: passenger, include: ['tickets', 'tickets.train'], status: :ok
     end
 
     def create
@@ -30,7 +30,7 @@ class PassengersController < ApplicationController
     private
 
     def find_passenger
-        return Passenger.find(params[:id])
+        return Passenger.find_by!(name: params[:id])
     end
 
     def permit_params

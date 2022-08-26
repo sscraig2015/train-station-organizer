@@ -1,32 +1,45 @@
-import React, {useEffect, useState} from 'react'
+import React, { useState} from 'react'
+import SelectedPassenger from '/home/sscraig/Development/Mod4/train-station/client/src/components/SelectedPassenger.js'
+import SearchForm from "/home/sscraig/Development/Mod4/train-station/client/src/components/SearchForm.js"
 
 const Passengers = ( ) => {
   
-  const [passengers, setPassengers] = useState([]) 
+  const [passName, setPassName] = useState('')
+  const [passenger, setPassenger] = useState(null)
+  const [errors, setErrors] = useState([])
  
-  useEffect(() => {
-    fetch('/passengers')
-      .then(resp => resp.json())
-      .then(data => setPassengers(data))
-  }, [])
+  // useEffect(() => {
+  //   fetch('/passengers')
+  //     .then(resp => resp.json())
+  //     .then(data => setPassengers(data))
+  // }, [])
 
-  return (
-        <div className="App">
-          <table>
-            <tr>
-              <th>Name</th>
-              
-            </tr>
-            {passengers.map((val, key) => {
-              return (
-                <tr key={key}>
-                  <td>{val.name}</td>
-                </tr>
-              )
-            })}
-          </table>
-        </div>
-      );
-}
+  function handleSubmit(e){
+    e.preventDefault()
+
+    
+    fetch(`/passengers/${passName}`).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setPassenger(data));
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    })
+      
+  }
+
+  if (!passenger) {
+    return <SearchForm setPassName={setPassName} handleSubmit={handleSubmit} errors={errors}/>
+  } else {
+    return (
+      <div>
+          <SearchForm setPassName={setPassName} handleSubmit={handleSubmit} errors={errors}/>
+          <SelectedPassenger passenger={passenger} />
+      </div>
+    )
+  }  
+  
+
+  }
 
 export default Passengers

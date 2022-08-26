@@ -1,5 +1,8 @@
 class PassengerSerializer < ActiveModel::Serializer
-  attributes :id, :name
-
-  has_many :trains
+  attributes :name
+  
+  
+  has_many :tickets
+  
+  
 end

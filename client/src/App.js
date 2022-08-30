@@ -5,6 +5,7 @@ import Trains from "./pages/Trains";
 import Passengers from "./pages/Passengers"
 import LoginForm from "./components/LoginForm";
 import LogOut from "./components/LogOut";
+import SelectedTrain from "./pages/SelectedTrain";
 
 
 
@@ -15,7 +16,8 @@ function App() {
   
   
   const [user, setUser] = useState(null)
- 
+  
+  
   
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -35,17 +37,16 @@ function App() {
   }
 
 
-  
   if (!user) return <LoginForm onLogin={setUser} />;
  
   return (
       <div className= "content">
         <NavBar />
         <Routes>
-          
-          <Route path= '/trains' element={ <Trains/> } />
+          <Route path= '/trains' element={ <Trains /> } />
           <Route path= '/passengers' element={ <Passengers/> } />
           <Route path= '/' element = { <LogOut handleLogOut={handleLogOut}/> } />
+          <Route path = '/trains/:id' element = { <SelectedTrain />} />
         </Routes>
       </div>
   )

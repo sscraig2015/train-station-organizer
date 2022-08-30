@@ -32,7 +32,7 @@ const Passengers = ( ) => {
     return <SearchForm setPassName={setPassName} handleSubmit={handleSubmit} errors={errors}/>
   } else {
     return (
-      <div>
+      <div className="passengerPage">
           <SearchForm setPassName={setPassName} handleSubmit={handleSubmit} errors={errors}/>
           <SelectedPassenger passenger={passenger} />
       </div>

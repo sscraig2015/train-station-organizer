@@ -38,9 +38,13 @@
 }
 
 .content {
-  max-width: 500px;
   margin: auto;
   text-align: center;
+}
+
+.navBar {
+  margin: 15px;
+  margin-bottom: 30px;
 }
 
 .navBar ul{
@@ -52,5 +56,68 @@
 .navBar li{
   display: inline;
   padding: 8px;
-  background-color: #dddddd;
+  background-color: #f1efef;
+}
+
+.passSelect {
+
+  text-align: left;
+}
+
+.passSelect h4 {
+  margin-left: 20px;
+  text-decoration: underline;
+}
+
+.passengerPage {
+
+  margin: 10px;
+}
+
+table {
+  
+  table-layout: fixed;
+  
+
+}
+  
+th {
+  border-bottom: 1px solid black;
+  
+}
+  
+td {
+  text-align: center;
+  
+}
+
+.selectedTrain {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  margin: auto;
+  padding: 0 0 14px 0;
+  width: 396px;
+}
+
+.selectedTrain li {
+  text-align: left;
+}
+
+.selectedTrain h2 h3 {
+  text-align: left;
+  margin: auto;
+  padding: 15px 0 0 15px;
+  text-decoration: underline;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  margin:auto;
+  width: 25%;
+  margin-top: 10%;
 }

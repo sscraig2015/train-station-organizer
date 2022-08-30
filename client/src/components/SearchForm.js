@@ -5,7 +5,7 @@ const SearchForm = ({handleSubmit, setPassName, errors}) => {
     
     
     return (
-    <div>
+    <div className='searchForm'>
         <form onSubmit={handleSubmit}>
             <div className="input-container">
                 <label>Search passenger...</label>

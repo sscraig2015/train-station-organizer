@@ -32,25 +32,26 @@ const LoginForm = ({onLogin}) => {
   
     
 
-    return (<div>
-              <form onSubmit={handleSubmit}>
-                <div className="input-container">
-                    <label>Username </label>
-                    <input type="text" name="uname" onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div className="input-container">
-                    <label>Password </label>
-                    <input type="password" name="pass"  onChange={(e) => setPassword(e.target.value)}/>
-                    
-                </div>
-                <div className="button-container">
-                    <input type="submit" />
-                </div>
-                {errors.map((err) => (
-                  <div key={err}>{err}</div>
-                ))}
-              </form>
-            </div>
+    return (
+      <div className='loginForm'>
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+              <label>Username </label>
+              <input type="text" name="uname" onChange={(e) => setUsername(e.target.value)} />
+          </div>
+          <div className="input-container">
+              <label>Password </label>
+              <input type="password" name="pass"  onChange={(e) => setPassword(e.target.value)}/>
+              
+          </div>
+          <div className="button-container">
+              <input type="submit" />
+          </div>
+          {errors.map((err) => (
+            <div key={err}>{err}</div>
+          ))}
+        </form>
+      </div>
     )
       
   

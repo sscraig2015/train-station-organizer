@@ -1,23 +1,14 @@
 class PassengersController < ApplicationController
 
-    def index
-        render json: Passenger.all
-    end
-
+    
     def show
         passenger = find_passenger
         render json: passenger, include: ['tickets', 'tickets.train'], status: :ok
     end
 
     def create
-        newPass = Passenger.create!(permit_params)
+        newPass = Passenger.find_or_create_by!(permit_params)
         render json: newPass, status: :created
-    end
-
-    def update
-        passenger = find_passenger
-        passenger.update(permit_params)
-        render json: passenger, status: :ok
     end
 
     def destroy

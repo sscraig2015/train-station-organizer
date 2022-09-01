@@ -2,11 +2,8 @@ import React, {useEffect, useState} from "react"
 import NavBar from "./components/NavBar";
 import {  Routes, Route } from "react-router-dom";
 import Trains from "./pages/Trains";
-import Passengers from "./pages/Passengers"
-import LoginForm from "./components/LoginForm";
-import LogOut from "./components/LogOut";
 import SelectedTrain from "./pages/SelectedTrain";
-
+import Home from "./pages/Home";
 
 
 
@@ -14,42 +11,64 @@ import SelectedTrain from "./pages/SelectedTrain";
 function App() {
   
   
-  
   const [user, setUser] = useState(null)
-  
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
   
   
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
+      };
+    })
+    }, []);
 
-  function handleLogOut(){
-    fetch('/sessions', {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json'
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      let username = e.target.uname.value
+      let password = e.target.pass.value
+     
+      fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      }).then((r) => {
+        
+        if (r.ok) {
+          r.json().then((user) => setUser(user));
+        } else {
+          
+          r.json().then((err) => setErrors(err.errors));
+        }
+      });
     }
-    }).then(setUser(null))
-  }
+
+    function handleLogOut(){
+      fetch('/sessions', {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+      }
+      }).then(setUser(null))
+    }
 
 
-  if (!user) return <LoginForm onLogin={setUser} />;
- 
-  return (
+    return (
       <div className= "content">
-        <NavBar />
+        <NavBar user={user}/>
         <Routes>
+          <Route path= '/' element = {<Home onLogin={setUser} user={user} handleLogOut={handleLogOut} handleSubmit={handleSubmit} errors={errors}/>} />
           <Route path= '/trains' element={ <Trains /> } />
-          <Route path= '/passengers' element={ <Passengers/> } />
-          <Route path= '/' element = { <LogOut handleLogOut={handleLogOut}/> } />
           <Route path = '/trains/:id' element = { <SelectedTrain />} />
         </Routes>
       </div>
-  )
+    )
+  
 }
 
 export default App;

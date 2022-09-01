@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_23_235401) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_144754) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,12 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_235401) do
 
   create_table "tickets", force: :cascade do |t|
     t.integer "price"
-    t.bigint "passenger_id", null: false
+    t.bigint "user_id", null: false
     t.bigint "train_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["passenger_id"], name: "index_tickets_on_passenger_id"
     t.index ["train_id"], name: "index_tickets_on_train_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
   create_table "trains", force: :cascade do |t|
@@ -35,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_235401) do
     t.string "section"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "arrival"
+    t.string "departure"
   end
 
   create_table "users", force: :cascade do |t|
@@ -42,8 +44,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_23_235401) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "display_name"
   end
 
-  add_foreign_key "tickets", "passengers"
+  add_foreign_key "tickets", "passengers", column: "user_id"
   add_foreign_key "tickets", "trains"
 end

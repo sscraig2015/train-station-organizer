@@ -1,22 +1,29 @@
 import React, {useState, useEffect} from 'react'
-import { Route, NavLink } from 'react-router-dom'
-import SelectedTrain from './SelectedTrain'
+import { NavLink } from 'react-router-dom'
+
 
 
 function Trains() {
   
   
-  const [trains, setTrains] = useState([])
+  const [trains, setTrains] = useState(null)
 
   useEffect(() => {
     
     fetch('/trains')
-      .then(resp => resp.json())
-      .then(data => setTrains(data))
+      .then((resp) => {
+        if (resp.ok) {
+          resp.json().then((data) => setTrains(data))
+        } else {
+          console.log(resp.ok)
+        }
+      })
+      
   }, [])
   
 
-  
+  if (trains) {
+    console.log(trains)
     return (
       <div className="App">
         <ul>
@@ -28,6 +35,10 @@ function Trains() {
         </ul>
       </div>
     );
+  } else { 
+    return <div>Loading...</div>
+  }
+    
 }
 
 export default Trains

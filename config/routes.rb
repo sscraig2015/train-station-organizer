@@ -9,7 +9,9 @@ Rails.application.routes.draw do
    resources :tickets
   end
   
-  resources :trains
+  resources :trains do
+    resources :tickets
+  end
 
   get '/me', to: 'users#show'
 

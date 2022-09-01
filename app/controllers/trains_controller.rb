@@ -1,17 +1,18 @@
 class TrainsController < ApplicationController
 
+    skip_before_action :authorize
     def index
-        render json: Train.all.order(:number)
+        render json: Train.all.order(:number), status: :ok
     end
 
     def show
         train = find_train
-        render json: train, status: :ok
+        render json: train, include: ['tickets', 'tickets.user'], status: :ok
     end
 
     def create
-        newPass = Train.create!(permit_params)
-        render json: newPass, status: :created
+        newTrain = Train.create!(permit_params)
+        render json: newTrain, status: :created
     end
 
     def update
@@ -30,7 +31,7 @@ class TrainsController < ApplicationController
     private
 
     def find_train
-        return Train.find(params[:id])
+        @selectedTrain = Train.find(params[:id])
     end
 
     def permit_params

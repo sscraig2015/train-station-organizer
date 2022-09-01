@@ -20,40 +20,18 @@ const SelectedTrain = () => {
             .then((r) => setTrainFound(true))
     }, [])
 
-    function handleSubmit(e){
-        e.preventDefault()
+    function handleClick(){
         
-        let newPassenger
-        
-        fetch('/passengers', {
+
+        fetch('/tickets', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({name: passenger}),
-            
-        }).then((resp) => resp.json()).then((data) => newPassenger = data)
-
-
-        newTicket(newPassenger)
-        
-       
+            body: JSON.stringify({price: 80, train_id: trainId.id})
+        })
     }
 
-    function newTicket(passenger){
-        console.log(passenger)
-        fetch(`${trainId.id}/tickets`, {
-            method: 'POST', // or 'PUT'
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({price: 80, passenger_id: passenger.id}),
-            })
-    }
-
-    function handleClick(){
-        setRevealTicektForm(true)
-    }
 
     if (trainFound) {
         return (
@@ -64,17 +42,8 @@ const SelectedTrain = () => {
                         <li>Arrival:   {train.arrival}</li>
                         <li>Departure:   {train.departure}</li>
                     </ul>
-                    <button onClick={handleClick}>New Ticket?</button>
-                    {ticketForm ? <NewTicketForm setPassenger={setPassenger} handleSubmit={handleSubmit}/> : null}
-                    <h3>Passengers:</h3>
-                    <ol>
-                        {train.tickets.map((ticket, key) => {
-                            return (
-                                <li key={key}>{ticket.passenger.name}</li>
-                            )
-                        })}
-                    </ol>
-                    
+                    <button onClick={handleClick}>Buy Ticket</button>
+       
                 </div> 
             </div>
         )

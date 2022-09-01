@@ -4,6 +4,7 @@ import {  Routes, Route } from "react-router-dom";
 import Trains from "./pages/Trains";
 import SelectedTrain from "./pages/SelectedTrain";
 import Home from "./pages/Home";
+import UserProfile from "./pages/UserProfile";
 
 
 
@@ -65,6 +66,7 @@ function App() {
           <Route path= '/' element = {<Home onLogin={setUser} user={user} handleLogOut={handleLogOut} handleSubmit={handleSubmit} errors={errors}/>} />
           <Route path= '/trains' element={ <Trains /> } />
           <Route path = '/trains/:id' element = { <SelectedTrain />} />
+          <Route path = 'myProfile' element = { <UserProfile user={user}/>} />
         </Routes>
       </div>
     )

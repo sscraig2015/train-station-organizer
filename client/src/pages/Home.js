@@ -1,16 +1,9 @@
 import React, { useState }from 'react'
-import LoginForm from '/home/sscraig/Development/Mod4/train-station/client/src/components/LoginForm.js'
+
 
 
 const Home = ({user, handleLogOut, handleSubmit, errors}) => {
   
-  
-    
-    
-  
-   
-  
-
 
   if (user) {
     return (
@@ -21,9 +14,7 @@ const Home = ({user, handleLogOut, handleSubmit, errors}) => {
       )
   } else {
    
-  
-  
-    
+
 
     return (
       <div className='loginForm'>

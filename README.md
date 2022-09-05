@@ -1,24 +1,12 @@
-# README
+# Train Station Ticket Kiosk
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application allows user's to find what train they need to take and allows them to buy tickets. Organize any tickets you've purchased on your personal page.
 
-Things you may want to cover:
+## Technologies
 
-* Ruby version
+* Rails
+* React
+* CSS
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Functionality 
+Any user will be able to view upcoming trains and their schedules. If a user would like to create a ticket for a particular train they must first login with a authentic username/password. After a user has logged in successfully they will be able to create tickets. After a ticket is created the user will be able to see any tickets they've created from there user profile. 

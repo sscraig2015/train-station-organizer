@@ -1,7 +1,10 @@
 class TicketsController < ApplicationController
 
+    
+
     def create
-        newTicket = @current_user.tickets.create!(permit_params)
+        user = User.find_by(id: session[:user_id])
+        newTicket = user.tickets.create!(permit_params)
         render json: newTicket, status: :created
     end
 
@@ -21,7 +24,8 @@ class TicketsController < ApplicationController
     private
 
     def find_ticket
-        @current_user.tickets.find_by(id: params[:id])
+        user = User.find_by(id: session[:user_id])
+        user.tickets.find_by(id: params[:id])
     end
 
     def permit_params

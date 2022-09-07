@@ -20,7 +20,9 @@ const SelectedTrain = () => {
             .then((r) => setTrainFound(true))
     }, [])
 
-    function handleClick(){
+    function handleClick(e){
+        e.preventDefault(e)
+        const name = e.target.passName.value
         
 
         fetch('/tickets', {
@@ -28,7 +30,7 @@ const SelectedTrain = () => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({price: 80, train_id: trainId.id})
+            body: JSON.stringify({price: 80, train_id: trainId.id, passenger_name: name })
         })
     }
 
@@ -42,7 +44,11 @@ const SelectedTrain = () => {
                         <li>Arrival:   {train.arrival}</li>
                         <li>Departure:   {train.departure}</li>
                     </ul>
-                    <button onClick={handleClick}>Buy Ticket</button>
+                    <form onSubmit={handleClick}>
+                    Name: <input type='text' name='passName'/>
+                    <button type='Submit'>Buy Ticket</button>   
+                    </form>
+                    
        
                 </div> 
             </div>

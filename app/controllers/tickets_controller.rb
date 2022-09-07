@@ -1,9 +1,7 @@
 class TicketsController < ApplicationController
 
-
-
     def create
-        @current_user.tickets.create!(permit_params)
+        newTicket = @current_user.tickets.create!(permit_params)
         render json: newTicket, status: :created
     end
 
@@ -23,10 +21,10 @@ class TicketsController < ApplicationController
     private
 
     def find_ticket
-        Ticket.find_by(id: params[:id])
+        @current_user.tickets.find_by(id: params[:id])
     end
 
     def permit_params
-        params.permit(:price, :train_id)
+        params.permit(:price, :train_id, :passenger_name, :id)
     end
 end

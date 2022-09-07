@@ -25,14 +25,26 @@ function Trains() {
   if (trains) {
     console.log(trains)
     return (
-      <div className="App">
-        <ul>
-          {trains.map((train, key) => {
+      <div className='allTrains'>
+        <table>
+          <thead>
+            <tr>
+              <th>Train Number</th>
+              <th>Train Destination</th>
+            </tr>
+          </thead>
+          <tbody>
+            {trains.map((train, key) => {
             return (
-              <li> <NavLink key={key} to = {`${train.id}`}>{train.number}</NavLink> </li>
+              <tr key={key}> 
+                <td><NavLink to = {`${train.id}`}>{train.number}</NavLink></td>
+                <td>{train.arrival}</td>
+              </tr>
             )
           })}
-        </ul>
+          </tbody>
+          
+        </table>
       </div>
     );
   } else { 

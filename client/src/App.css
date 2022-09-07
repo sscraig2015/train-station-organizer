@@ -121,3 +121,27 @@ td {
   width: 25%;
   margin-top: 10%;
 }
+
+.allTrains {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  margin:auto;
+  width: 30%;
+  margin-top: 10%;
+}
+
+.myTickets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+  margin:auto;
+  width: 50%;
+  margin-top: 10%;
+}

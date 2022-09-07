@@ -13,8 +13,7 @@ function App() {
   
   
   const [user, setUser] = useState(null)
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+
   const [errors, setErrors] = useState([]);
   
   
@@ -66,7 +65,7 @@ function App() {
           <Route path= '/' element = {<Home onLogin={setUser} user={user} handleLogOut={handleLogOut} handleSubmit={handleSubmit} errors={errors}/>} />
           <Route path= '/trains' element={ <Trains /> } />
           <Route path = '/trains/:id' element = { <SelectedTrain />} />
-          <Route path = 'myProfile' element = { <UserProfile user={user}/>} />
+          <Route path = '/myProfile' element = { <UserProfile />} />
         </Routes>
       </div>
     )

@@ -24,7 +24,7 @@ function NavBar({user}) {
     </div>
   );
   }
-  
+   
 }
 
 

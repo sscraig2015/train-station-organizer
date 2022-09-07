@@ -5,9 +5,6 @@ class ApplicationController < ActionController::API
 
     before_action :authorize
 
-
-    
-    
     private
 
     def authorize
@@ -15,7 +12,7 @@ class ApplicationController < ActionController::API
         render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
     end
 
-    def not_found()
+    def not_found
         render json: { errors: ["User not found." ]}, status: :unprocessable_entity
     end
 

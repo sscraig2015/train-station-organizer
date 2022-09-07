@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import SelectedTicket from '/home/sscraig/Development/Mod4/train-station/client/src/components/SelectedTicket.js'
+import SelectedTicket from './SelectedTrain'
 
 
 const UserProfile = () => {

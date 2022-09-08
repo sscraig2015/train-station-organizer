@@ -21,7 +21,7 @@ class TrainsController < ApplicationController
     private
 
     def find_train
-        @selectedTrain = Train.find(params[:id])
+        Train.find(params[:id])
     end
 
     def permit_params

@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const SelectedTicket = ({ticket, setTicket}) => {
-  
+  console.log(ticket)
   
   function UpdatePassenger(e){
     e.preventDefault()

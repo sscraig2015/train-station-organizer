@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import SelectedTicket from './SelectedTrain'
+import SelectedTicket from '../components/SelectedTicket'
 
 
 const UserProfile = () => {
@@ -16,7 +16,7 @@ const UserProfile = () => {
     },[])
 
     function handleDelete(e){
-        fetch(`tickets/${e.target.name}`, {
+        fetch(`/tickets/${e.target.name}`, {
             method: 'DELETE',
             header: {
                 'Content-type': 'application/json'
@@ -25,8 +25,9 @@ const UserProfile = () => {
     }
 
     function handleUpdate(e){
-        console.log(e.target.value)
+        
         const ticket = user.tickets.find((ticket) => ticket.id === parseInt(e.target.value))
+        
         setTicket(ticket)
     }
     
